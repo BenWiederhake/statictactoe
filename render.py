@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import io
-import svgwrite
 import os
+import shutil
+import svgwrite
 
 MARGIN = 32
 SYMBOL_SIZE = 100
@@ -168,7 +169,7 @@ def render_htmlpage(state, ai_first_name):
 
     # Prepare
     kind = {None: 'play', 'X': 'won', 'O': 'lost', '!': 'draw'}[get_winner(state)]
-    template_name = 'template_{}.html'.format(kind)
+    template_name = 'templates' + os.path.sep + kind + '.html'
     with open(template_name, 'r') as fp:
         template = fp.read()
     links = ['#'] * 9
@@ -202,6 +203,7 @@ def render_all_htmlpages():
     render_htmlpage(EMPTY_BOARD, ai_first_name)
     render_htmlpage(('X') * 9, ai_first_name)  # ;-)
     render_htmlpage(('O') * 9, ai_first_name)  # ;-)
+    shutil.copy('templates' + os.path.sep + 'index.html', 'out' + os.path.sep + 'index.html')
 
 
 if __name__ == '__main__':
