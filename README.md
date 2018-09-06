@@ -1,6 +1,6 @@
-# StaTic-Tac-Toe
+# [StaTic-Tac-Toe](https://benwiederhake.github.io/statictactoe/)
 
-> Play TicTacToe against a static, no-JS webpage
+> [Play TicTacToe](https://benwiederhake.github.io/statictactoe/) against a static, no-JS webpage
 
 There are many [Tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) implementations.  
 There are many *web implementations* of it, usually server-side.  
