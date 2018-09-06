@@ -119,11 +119,11 @@ RESPONSES = dict()
 
 # Very stupid, brute-force enumeration of all states.
 def solve_for(state, turn_symbol):
-    response = RESPONSES.get(state)
+    response = RESPONSES.get((state, turn_symbol))
     if response is not None:
-        print('CACHED', state, response)
+        #print('CACHED', state, response)
         return response
-    print('BEGIN', state)
+    #print('BEGIN', state)
     assert get_winner(state) == None
     other_symbol = {'X': 'O', 'O': 'X'}[turn_symbol]
     available_responses = []
@@ -139,10 +139,10 @@ def solve_for(state, turn_symbol):
                 _, _, other_rating = solve_for(substate, other_symbol)
                 rating = -other_rating
             available_responses.append((x, y, rating))
-    print('AVAILABLE', available_responses)
+    #print('AVAILABLE', available_responses)
     response = max(available_responses, key=lambda x: x[2])
-    RESPONSES[state] = response
-    print('END', state, response)
+    RESPONSES[(state, turn_symbol)] = response
+    #print('END', state, response)
     return response
 
 
